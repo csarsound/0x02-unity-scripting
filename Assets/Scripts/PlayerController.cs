@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; //Load scene
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,7 +22,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (health == 0)
+        {
+            Debug.Log("Game Over!");
+            SceneManager.LoadScene("maze"); //load scene
+        }
     }
 
     // it is called every fixed frame-rate frame.
