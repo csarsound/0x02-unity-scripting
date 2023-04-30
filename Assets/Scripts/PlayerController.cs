@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     // This is a reference to the Rigibody
     public Rigidbody rb;
 
+    // Initial value of score to 0
+    private int score = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +47,17 @@ public class PlayerController : MonoBehaviour
         if ( Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow))
         {
             rb.AddForce(0, 0, -speed * Time.deltaTime);
+        }
+    }
+
+    // Manipulate Objects with the Tags
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Pickup")
+        {
+            score += 1;
+            Debug.Log($"Score: {score}");
+            other.gameObject.SetActive(false);
         }
     }
 }
