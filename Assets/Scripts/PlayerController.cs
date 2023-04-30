@@ -6,11 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     // Variable that can be edited in the Inspector
     public float speed = 300f;
+    public int health = 5;
 
     // This is a reference to the Rigibody
     public Rigidbody rb;
-
-    // Initial value of score to 0
     private int score = 0;
 
     // Start is called before the first frame update
@@ -58,6 +57,12 @@ public class PlayerController : MonoBehaviour
             score += 1;
             Debug.Log($"Score: {score}");
             other.gameObject.SetActive(false);
+        }
+
+        if (other.tag == "Trap")
+        {
+            health -= 1;
+            Debug.Log($"Health: {health}");
         }
     }
 }
